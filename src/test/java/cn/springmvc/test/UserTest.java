@@ -2,6 +2,7 @@ package cn.springmvc.test;
 
 import cn.springmvc.model.User;
 import cn.springmvc.service.UserService;
+import cn.springmvc.util.DatabaseContextHolder;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -25,10 +26,18 @@ public class UserTest {
 
     @Test
     public void addUser(){
-        User user = new User();
-        user.setNickname("倪达玉");
-        System.out.println(user.getNickname());
-        user.setState(1);
-        System.out.println(userService.insertUser(user));
+        //切换数据源
+        DatabaseContextHolder.setCustomerType(DatabaseContextHolder.DATA_SOURCE_META);
+        try {
+            User user = new User();
+            user.setNickname("倪达玉");
+            System.out.println(user.getNickname());
+            user.setState(1);
+            System.out.println(userService.insertUser(user));
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DatabaseContextHolder.clearCustomerType();
+        }
     }
 }

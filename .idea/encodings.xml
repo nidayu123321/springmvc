@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/src/test/java/cn/springmvc/test/UserTest.java" charset="UTF-8" />
-    <file url="PROJECT" charset="UTF-8" />
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/springmvc/controller/UserComtroller.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/springmvc/util/DatabaseContextHolder.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/springmvc/util/DynamicDataSource.java" charset="UTF-8" />
   </component>
 </project>
