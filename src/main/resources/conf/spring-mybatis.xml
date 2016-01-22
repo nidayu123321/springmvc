@@ -83,12 +83,7 @@
          p:dataSource-ref="dynamicDataSource"
          p:configLocation="classpath:conf/mybatis-config.xml"
          p:mapperLocations="classpath:mapper/*.xml">
-    </bean><!-- configLocation为mybatis属性 mapperLocations为所有mapper-->
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-        <!--<property name="dataSource" ref="dynamicDataSource" />-->
-        <!--<property name="configLocation" value="classpath:conf/mybatis-config.xml" />-->
-        <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
-    <!--</bean>-->
+    </bean>
 
    <!-- spring与mybatis整合配置，扫描所有dao -->
    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
