@@ -74,7 +74,7 @@
                 <entry value-ref="dataSource_meta" key="dataSource_meta" ></entry>
             </map>
         </property>
-        <property name="defaultTargetDataSource" ref="dataSource_read">
+        <property name="defaultTargetDataSource" ref="dataSource_meta">
         </property>
     </bean>
 

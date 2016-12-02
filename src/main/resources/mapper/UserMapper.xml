@@ -6,7 +6,7 @@
 <resultMap id="myUserMap" type="cn.springmvc.model.User"/>
 
     <insert id="insertUser" parameterType="User" keyProperty="id">
-        insert into user(state,nickname) values(#{state},#{nickname})
+        insert into user(cardNo,password) values(#{cardNo},#{password})
     </insert>
 
     <select id="queryUserById" resultMap="myUserMap" parameterType="int">

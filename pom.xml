@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
   <properties>
     <!-- spring版本号 -->
-    <spring.version>3.2.4.RELEASE</spring.version>
+    <spring.version>4.2.2.RELEASE</spring.version>
     <!-- mybatis版本号 -->
     <mybatis.version>3.2.4</mybatis.version>
     <!-- log4j日志文件管理包版本 -->
@@ -169,7 +169,27 @@
         <directory>src/test/resources</directory>
       </testResource>
     </testResources>
-
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.2.4.v20141103</version>
+        <configuration>
+          <scanIntervalSeconds>0</scanIntervalSeconds>
+          <stopKey>stop</stopKey>
+          <stopPort>9999</stopPort>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
 </project>
