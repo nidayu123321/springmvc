@@ -1,7 +1,6 @@
 package cn.springmvc.spider.gjj;
 
 import cn.springmvc.spider.HttpClientFactory;
-import cn.springmvc.util.DateUtils;
 import cn.springmvc.util.FileUtil;
 import cn.springmvc.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -126,13 +125,13 @@ public class HeFei extends HttpClientFactory {
         HeFei hefei = new HeFei(httpClient);
 
         // 初始化
-        hefei.init();
+//        hefei.init();
 //        String authCode = StringUtil.inputYanzhengma();
 //        // 以验证码的方式进去
 //        hefei.login("510104818", "123456", authCode);
 
         // 获取没抓全的信息
-//        hefei.getHasNotCrawler();
+        hefei.getHasNotCrawler();
         // 重新跑没抓全的数据
 //        hefei.retry(authCode);
 

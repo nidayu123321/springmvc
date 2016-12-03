@@ -1,7 +1,8 @@
 package cn.springmvc.dao;
 
 import cn.springmvc.model.GJJUserInfo;
-import cn.springmvc.model.User;
+
+import java.util.List;
 
 /**
  * Created by nidayu on 16/12/3.
@@ -12,4 +13,5 @@ public interface GJJUserInfoDAO {
 
     public GJJUserInfo queryGJJUserInfoById(int id);
 
+    public List<String> queryExistAccount();
 }
