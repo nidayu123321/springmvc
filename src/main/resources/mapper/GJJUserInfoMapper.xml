@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.springmvc.dao.GJJUserInfoDAO">
+    <resultMap id="gjjUserInfoMap" type="cn.springmvc.model.GJJUserInfo"/>
+
+    <insert id="insertGJJUserInfo" parameterType="GJJUserInfo" keyProperty="id">
+        insert into gjj_user_info(name, companyName, personalAccount, companyAccount, idCard, cardNumber, wageBase,
+        companyDepositRadio, personalDepositRadio, personalMonthlyPayment, companyMonthlyPayment, accountBalance,
+        accountStatus, joinBank, collectionPoint, bankCard, password, officeBelone, dateOpened, monthlyPayment, lastYearBalance)
+        values(#{name}, #{companyName}, #{personalAccount}, #{companyAccount}, #{idCard}, #{cardNumber}, #{wageBase},
+         #{companyDepositRadio}, #{personalDepositRadio}, #{personalMonthlyPayment}, #{companyMonthlyPayment},
+         #{accountBalance}, #{accountStatus}, #{joinBank}, #{collectionPoint}, #{bankCard}, #{password},
+         #{officeBelone}, #{dateOpened}, #{monthlyPayment}, #{lastYearBalance})
+    </insert>
+
+    <select id="queryGJJUserInfoById" resultMap="gjjUserInfoMap" parameterType="int">
+        select * from gjj_user_info where id=#{id}
+    </select>
+
+</mapper>

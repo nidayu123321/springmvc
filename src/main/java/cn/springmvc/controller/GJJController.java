@@ -2,7 +2,9 @@ package cn.springmvc.controller;
 
 import cn.springmvc.service.UserService;
 import cn.springmvc.spider.HttpClientFactory;
+import cn.springmvc.spider.gjj.HeFei;
 import cn.springmvc.spider.gjj.LiaoYuan;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,18 +16,29 @@ import javax.annotation.Resource;
  * @Description:
  * @date 2016/11/28
  */
+@Slf4j
 @Controller
 @RequestMapping("/gjj/")
 public class GJJController {
 
-    protected org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("GJJController");
-
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "ly")
+    @RequestMapping(value = "hefei")
+    public String clawHeFei(){
+        log.info("合肥......");
+        CloseableHttpClient httpClient = HttpClientFactory.getInstance();
+        HeFei heFei = new HeFei(httpClient);
+        return "liaoyuan";
+    }
+
+    /**
+     * 吉林辽源
+     * @return
+     */
+    @RequestMapping(value = "liaoyuan")
     public String queryUserById(){
-        logger.info("开始抓取辽源");
+        log.info("开始抓取辽源");
         CloseableHttpClient httpClient = HttpClientFactory.getInstance();
         LiaoYuan liaoYuan = new LiaoYuan(httpClient);
         String first = "01";

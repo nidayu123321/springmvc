@@ -1,5 +1,6 @@
 package cn.springmvc.spider.gjj;
 
+import cn.springmvc.model.GJJUserInfo;
 import cn.springmvc.spider.HttpClientFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.jsoup.Jsoup;
@@ -10,6 +11,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 吉林辽源
@@ -22,6 +25,8 @@ public class LiaoYuan extends HttpClientFactory {
     public LiaoYuan(CloseableHttpClient httpClient){
         this.httpClient = httpClient;
     }
+
+    private List<GJJUserInfo> gjjUserInfoList = new ArrayList<>();
 
     public int login(String userName, String password) {
 

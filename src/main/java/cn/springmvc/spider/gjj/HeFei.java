@@ -1,6 +1,7 @@
 package cn.springmvc.spider.gjj;
 
 import cn.springmvc.spider.HttpClientFactory;
+import cn.springmvc.util.DateUtils;
 import cn.springmvc.util.FileUtil;
 import cn.springmvc.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,8 @@ public class HeFei extends HttpClientFactory {
         String url = "http://117.71.52.54/hfgjj/jsp/web/public/search/grlogin.jsp";
         getUrl(url);
         url = "http://117.71.52.54/hfgjj/code.jsp";
-        downloadImgByGet(url, "http://117.71.52.54/hfgjj/jsp/web/public/search/grlogin.jsp", "c://1202/"+System.currentTimeMillis()+".png");
+        downloadImgByGet(url, "http://117.71.52.54/hfgjj/jsp/web/public/search/grlogin.jsp",
+                "c://img//"+System.currentTimeMillis()+".png");
     }
 
     public int login(String userName, String password, String authCode) {
@@ -125,20 +127,20 @@ public class HeFei extends HttpClientFactory {
 
         // 初始化
         hefei.init();
-        String authCode = StringUtil.inputYanzhengma();
-        // 以验证码的方式进去
-        hefei.login("510104818", "123456", authCode);
+//        String authCode = StringUtil.inputYanzhengma();
+//        // 以验证码的方式进去
+//        hefei.login("510104818", "123456", authCode);
 
         // 获取没抓全的信息
 //        hefei.getHasNotCrawler();
         // 重新跑没抓全的数据
-        hefei.retry(authCode);
+//        hefei.retry(authCode);
 
         //开始进行抓取
 //        hefei.run(hefei, authCode);
     }
 
-    private void run(HeFei hefei, String authCode){
+    public void run(HeFei hefei, String authCode){
         String first = "51";
         List<String> names = hefei.getFileNames();
         // 进行循环
@@ -161,6 +163,5 @@ public class HeFei extends HttpClientFactory {
             }
         }
     }
-
 
 }

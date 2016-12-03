@@ -14,7 +14,6 @@ public class FileUtil {
     }
 
     /**
-     * ��ȡ�ļ�
      * @param filePath
      * @param charset
      * @return
@@ -41,26 +40,22 @@ public class FileUtil {
     }
 
     /**
-     * д���ļ�
      * @param filePath
      * @param info
      */
     public static void writeFile (String filePath, String info) throws Exception{
         File fp = new File(filePath.substring(0, filePath.lastIndexOf("/")-1));
-        // ����Ŀ¼
         if (!fp.exists()) {
-            fp.mkdirs();// Ŀ¼�����ڵ�����£�����Ŀ¼��
+            fp.mkdirs();
         }
         FileWriter fw = new FileWriter(filePath);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write(info);
-        // ���ر��򲻻�д��
         bw.close();
         fw.close();
     }
 
     /**
-     * ����InputStream���͵�ͼƬ��֤��
      * @param filePath
      * @param inputStream
      */
@@ -68,7 +63,7 @@ public class FileUtil {
         File file=new File(filePath);
         OutputStream os=null;
         try{
-            os=new FileOutputStream(file);
+            os = new FileOutputStream(file);
             byte buffer[]=new byte[4*1024];
             int len;
             while((len = inputStream.read(buffer)) != -1){
