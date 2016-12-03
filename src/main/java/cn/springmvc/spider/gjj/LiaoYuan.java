@@ -288,7 +288,7 @@ public class LiaoYuan extends HttpClientFactory {
         CloseableHttpClient httpClient = getInstance();
         LiaoYuan liaoYuan = new LiaoYuan(httpClient);
         String first = "01";
-        for (int j = 1081; j < 100000; j++){ //
+        for (int j = 1187; j < 100000; j++){ //
             String begin = "0000" + j;
             begin = begin.substring(begin.length() - 5);
             int total = 0;
