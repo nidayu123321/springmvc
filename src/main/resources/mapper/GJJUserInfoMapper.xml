@@ -15,6 +15,23 @@
          #{officeBelone}, #{dateOpened}, #{monthlyPayment}, #{lastYearBalance})
     </insert>
 
+    <insert id="batchInsetGJJUserInfo" parameterType="java.util.List" keyProperty="id">
+        insert into gjj_user_info(name, companyName, personalAccount, companyAccount, idCard, cardNumber, wageBase,
+        companyDepositRadio, personalDepositRadio, personalMonthlyPayment, companyMonthlyPayment, accountBalance,
+        accountStatus, joinBank, collectionPoint, bankCard, password, officeBelone, dateOpened, monthlyPayment, lastYearBalance)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.name}, #{item.companyName}, #{item.personalAccount}, #{item.companyAccount}, #{item.idCard},
+            #{item.cardNumber},
+            #{item.wageBase},
+            #{item.companyDepositRadio}, #{item.personalDepositRadio}, #{item.personalMonthlyPayment},
+            #{item.companyMonthlyPayment},
+            #{item.accountBalance}, #{item.accountStatus}, #{item.joinBank}, #{item.collectionPoint}, #{item.bankCard},
+            #{item.password},
+            #{item.officeBelone}, #{item.dateOpened}, #{item.monthlyPayment}, #{item.lastYearBalance})
+        </foreach>
+    </insert>
+
     <select id="queryGJJUserInfoById" resultMap="gjjUserInfoMap" parameterType="int">
         select * from gjj_user_info where id=#{id}
     </select>

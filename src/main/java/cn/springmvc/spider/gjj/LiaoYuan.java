@@ -60,19 +60,22 @@ public class LiaoYuan extends HttpClientFactory {
             responseString = getUrl(url, headers, "GBK");
             if (responseString != null && responseString.contains("公积金信息")) {
                 // 解析公积金信息
-                return parseGJJBasicPersonaInfo(responseString);
+                return parseGJJBasicPersonaInfo(responseString, userName);
             }
         }
         return null;
     }
 
-    private GJJUserInfo parseGJJBasicPersonaInfo(String responseString) {
+    private GJJUserInfo parseGJJBasicPersonaInfo(String responseString, String userName) {
         try {
-            log.info("解析基本信息开始：");
             GJJUserInfo gjjUserInfo = new GJJUserInfo();
             Document document= Jsoup.parse(responseString);
             Elements tds = document.select("table").get(14).select("tr").select("td");
             gjjUserInfo.setPassword("111111");
+            gjjUserInfo.setPersonalAccount(userName);
+            if (responseString.contains("该职工已销户")){
+                gjjUserInfo.setAccountStatus("该职工已销户");
+            }
             for (int i = 1; i < tds.size() - 1; i++){
                 Element td = tds.get(i);
                 if ("职工姓名".equals(td.text())){

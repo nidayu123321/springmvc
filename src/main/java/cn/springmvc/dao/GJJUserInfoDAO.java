@@ -14,4 +14,6 @@ public interface GJJUserInfoDAO {
     public GJJUserInfo queryGJJUserInfoById(int id);
 
     public List<String> queryExistAccount();
+
+    public int batchInsetGJJUserInfo(List<GJJUserInfo> gjjUserInfoList);
 }

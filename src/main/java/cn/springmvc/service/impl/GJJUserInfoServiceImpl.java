@@ -32,4 +32,9 @@ public class GJJUserInfoServiceImpl implements GJJUserInfoService{
         return gjjUserInfoDAO.queryExistAccount();
     }
 
+    @Override
+    public int batchInsetGJJUserInfo(List<GJJUserInfo> gjjUserInfoList) {
+        return gjjUserInfoDAO.batchInsetGJJUserInfo(gjjUserInfoList);
+    }
+
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,6 +43,7 @@ public class GJJController {
     @RequestMapping(value = "liaoyuan")
     public String getLiaoYuanGJJUserInfo(){
         log.info("辽源");
+        List<GJJUserInfo> gjjUserInfoList = new ArrayList<>();
         // 根据文本进行抓取
         String text = FileUtil.readFile("c://辽源.htm");
         String[] names = text.split("\\n");
@@ -50,18 +52,26 @@ public class GJJController {
         StringBuffer stringBuffer = new StringBuffer();
         CloseableHttpClient httpClient = HttpClientFactory.getInstance();
         LiaoYuan liaoYuan = new LiaoYuan(httpClient);
-        for (String name : names){
+        for (int i = 0; i < names.length; i ++){
+            String name = names[i];
             name = name.replace("\r", "");
             if (existAccounts == null || !existAccounts.contains(name)) {
                 GJJUserInfo gjjUserInfo = liaoYuan.login(name, "111111");
                 if (gjjUserInfo != null) {
+                    gjjUserInfoList.add(gjjUserInfo);
                     int flag = gjjUserInfoService.insertGJJUserInfo(gjjUserInfo);
                     if (flag != 1) {
                         stringBuffer.append(name + "\\n");
                     }
                 }
             }
+            if (gjjUserInfoList.size() >= 100 || i == names.length - 1){
+                int flag = gjjUserInfoService.batchInsetGJJUserInfo(gjjUserInfoList);
+                log.info("flag is......" + flag);
+                gjjUserInfoList.clear();
+            }
         }
+        log.info(stringBuffer.toString());
         return stringBuffer.toString();
     }
 
